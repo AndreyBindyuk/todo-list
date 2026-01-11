@@ -47,10 +47,19 @@ export const todoSlice = createSlice({
       t.completed = !t.completed;
       t.updatedAt = now();
     },
-    reorderTodos: (state, action: PayloadAction<{ from: number; to: number }>) => {
+    reorderTodos: (
+      state,
+      action: PayloadAction<{ from: number; to: number }>,
+    ) => {
       const { from, to } = action.payload;
       if (from === to) return;
-      if (from < 0 || to < 0 || from >= state.items.length || to >= state.items.length) return;
+      if (
+        from < 0 ||
+        to < 0 ||
+        from >= state.items.length ||
+        to >= state.items.length
+      )
+        return;
 
       const [moved] = state.items.splice(from, 1);
       state.items.splice(to, 0, moved);
@@ -58,5 +67,6 @@ export const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, updateTodo, deleteTodo, toggleTodo, reorderTodos } = todoSlice.actions;
+export const { addTodo, updateTodo, deleteTodo, toggleTodo, reorderTodos } =
+  todoSlice.actions;
 export default todoSlice.reducer;

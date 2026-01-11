@@ -2,8 +2,21 @@ import { Box } from "@mui/material";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export const SortableTodoRow = ({ id, children }: { id: string; children: React.ReactNode }) => {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+export const SortableTodoRow = ({
+  id,
+  children,
+}: {
+  id: string;
+  children: React.ReactNode;
+}) => {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
     id,
   });
 

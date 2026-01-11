@@ -19,7 +19,10 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 
 import { useAppDispatch } from "@shared/lib/hooks/useAppDispatch";
 import { useAppSelector } from "@shared/lib/hooks/useAppSelector";
@@ -102,15 +105,23 @@ export const TodoList = () => {
 
           {(query.trim() !== "" || status !== "all") && (
             <Typography variant="caption" sx={{ opacity: 0.7 }}>
-              Drag & Drop ordering is available only in "All" view without search/filter.
+              Drag & Drop ordering is available only in "All" view without
+              search/filter.
             </Typography>
           )}
 
           {filtered.length === 0 ? (
             <Typography sx={{ opacity: 0.7 }}>No TODO items yet.</Typography>
           ) : (
-            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
-              <SortableContext items={sortableIds} strategy={verticalListSortingStrategy}>
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={onDragEnd}
+            >
+              <SortableContext
+                items={sortableIds}
+                strategy={verticalListSortingStrategy}
+              >
                 <Stack spacing={2}>
                   {filtered.map((t) => (
                     <SortableTodoRow key={t.id} id={t.id}>
@@ -125,4 +136,4 @@ export const TodoList = () => {
       </CardContent>
     </Card>
   );
-}
+};
